@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD BAR - Cocktail & Bar Management App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <style>
+        body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+        .hero { text-align: center; padding: 3rem 0; }
+        .download-btn { display: inline-block; background: #0076FF; color: white; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 1rem; }
+        .download-btn:hover { background: #0056b3; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin-bottom: 2rem; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        .card { border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>MAD BAR</h1>
+        <p>Your ultimate digital cocktail companion & bar management tool.</p>
+        <a href="#" class="download-btn">Download on the App Store</a>
+    </header>
+
+    <hr>
+
+    <section id="videos">
+        <h2>How-To Videos</h2>
+        <p>Get up and running with MAD BAR in minutes.</p>
+        
+        <h3>App Overview & Setup</h3>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="downloads">
+        <h2>Recipe Packs & Resources</h2>
+        <p>Expand your digital menu with downloadable custom recipe packs.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Classic Tiki Pack</h3>
+                <p>15 essential tropical rum recipes configured cleanly for manual import.</p>
+                <a href="packs/classic_tiki.json" download>Download Pack (.json)</a>
+            </div>
+            <div class="card">
+                <h3>Prohibition Era Pack</h3>
+                <p>Classic pre-prohibition bourbon and gin setups to build your baseline bar.</p>
+                <a href="packs/prohibition_classics.json" download>Download Pack (.json)</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #666;">
+            &copy; 2026 MAD BAR. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
