@@ -175,13 +175,80 @@
         }
 
         #downloads {
-            padding: 0 1rem;
-            margin-bottom: 4rem;
-        }
+    padding: 0 1rem;
+    margin-bottom: 4rem;
+}
 
-        #downloads h2 { font-size: 1.75rem; margin-bottom: 1rem; color: #ffffff; }
-        #downloads h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #e4e4e7; }
-        #downloads p { color: #a1a1aa; margin-bottom: 1.5rem; }
+#downloads h2 { 
+    font-size: 2rem; 
+    font-weight: 700; 
+    color: #ffffff;
+    margin-bottom: 0.25rem; /* Tight spacing above subtitle */
+}
+
+/* TIGHTENED: Smaller font style for the second line descriptor */
+#downloads .section-subtitle { 
+    color: #a1a1aa; 
+    font-size: 1.05rem; 
+    margin-bottom: 2.5rem; 
+}
+
+/* Flexbox container that handles layout left-to-right & wraps items to a new line */
+.packs-grid-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0; /* Handled perfectly by padding/borders instead */
+    margin-top: 1rem;
+}
+
+/* Column cards with light vertical line styling */
+.pack-column {
+    flex: 1;
+    min-width: 250px; /* Forces wrap to next row safely on small mobile screens */
+    max-width: 450px;
+    padding: 0 2rem 2rem 0; /* Clean tight breathing room inside */
+    margin-bottom: 2rem;
+}
+
+/* Applies a thin vertical line on the right side of every column EXCEPT the last one */
+.pack-column:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 2rem;
+}
+
+#downloads h3 { 
+    font-size: 1.4rem; 
+    font-weight: 600; 
+    margin-bottom: 0.5rem; 
+    color: #ffffff; 
+}
+
+#downloads .pack-column p { 
+    color: #a1a1aa; 
+    font-size: 1rem;
+    margin-bottom: 1.25rem; 
+}
+
+/* Clean up the default blue hyperlink style to look premium */
+.download-link {
+    display: inline-block;
+    color: #38bdf8; /* Sleek accent blue */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.download-link:hover {
+    color: #7dd3fc;
+    text-decoration: underline;
+}
+
+/* Style for unavailable text links */
+.download-link.disabled {
+    color: #52525b;
+    pointer-events: none;
+    text-decoration: none;
+}
     </style>
 </head>
 <body>
@@ -225,23 +292,26 @@
 
 <!-- Downloads Section -->
     <section id="downloads">
-        <h2>Recipe Packs & Resources</h2>
-        <p>Expand your digital menu with downloadable custom recipe packs.</p>
+    <h2>Recipe Packs & Resources</h2>
+    <p class="section-subtitle">Expand your digital menu with downloadable custom recipe packs.</p>
+    
+    <div class="packs-grid-container">
         
-        <div class="grid">
-            <div class="card">
-                <h3>Starter Pack!</h3>
-                <p>10 famous recipes to start with!</p>
-                <!-- URL spaces are written as %20 so the browser can find the file -->
-                <a href="packs/MADBAR-Starter-Pack.madbar" download="MADBAR-Starter-Pack.madbar">Starter Pack (.madbar)</a>
-            </div>
-            <div class="card">
-                <h3>Coming Soon!</h3>
-                <p>Check back often.</p>
-                <a href="" download="">Coming Soon!</a>
-            </div>
+        <div class="pack-column">
+            <h3>Starter Pack!</h3>
+            <p>10 famous recipes to start with!</p>
+            <a href="packs/Starter_Pack.madbar" class="download-link">Starter Pack (.madbar)</a>
         </div>
+
+        <div class="pack-column">
+            <h3>Coming Soon!</h3>
+            <p>Check back often.</p>
+            <a href="#" class="download-link disabled">Coming Soon!</a>
+        </div>
+
+    </div>
     </section>
+        
 <a href="mailto:fbirdgator@gmail.com?subject=GitHub%20Page%20Feedback" 
    style="display: inline-block; 
           padding: 10px 20px; 
