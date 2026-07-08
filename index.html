@@ -115,45 +115,45 @@
             height: 50px;
         }
 
-        /* --- Section Tweak & Tight Spacing --- */
+ /* Container using CSS Grid for perfect layout control */
+.video-grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 column by default on mobile */
+    gap: 20px; /* Space between the videos */
+    padding: 10px;
+}
 
-        .video-row-container {
-            display: flex;
-            flex-wrap: wrap; 
-            gap: 0;
-            margin-top: 1.5rem;
-        }
+/* Responsiveness: Switch to 3 columns on desktops/tablets */
+@media (min-width: 768px) {
+    .video-grid-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    }
+}
 
-        .video-column {
-            flex: 1;
-            min-width: 320px; 
-            max-width: 500px;
-            padding-bottom: 2rem;
-        }
+/* Keeps the video wrapper behaving nicely */
+.video-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-        .video-column:not(:last-child) {
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding-right: 2.5rem;
-            margin-right: 2.5rem;
-        }
+/* 16:9 Aspect Ratio Aspect Hack for responsive iframes */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; 
-            height: 0;
-            margin-top: 1rem;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
         
         #videos {
             margin-bottom: 4rem;
@@ -330,24 +330,52 @@
     
     <div class="video-hr"></div>
     
-    <div class="video-row-container">
+    <div class="video-grid-container">
         
         <div class="video-column">
             <h3>Installing Starter Pack</h3>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://youtube.com/embed/j3-dq0ghC8I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://youtube.com/embed/j3-dq0ghC8I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="video-column">
-            <h3>Using Event Party Mode</h3>
+            <h3>MADBAR Walkthrough</h3>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://youtube.com/embed/3AT1S2paj7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://youtube.com/embed/cy-UDvjIdmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video-column">
+            <h3>MADBAR AI Bartender</h3>
+            <div class="video-container">
+                <iframe src="https://youtube.com/embed/iI_uOA3H48s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video-column">
+            <h3>MADBAR Event Page</h3>
+            <div class="video-container">
+                <iframe src="https://youtube.com/embed/3AT1S2paj7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video-column">
+            <h3>MADBAR Shopping</h3>
+            <div class="video-container">
+                <iframe src="https://youtube.com/embed/d1rA9LgVQgc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="video-column">
+            <h3>MADBAR Import from Camera or Photos</h3>
+            <div class="video-container">
+                <iframe src="https://youtube.com/embed/0dJ0o_q_u08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
 
     </div>
-    </section>
+</section>
 
         <hr class="section-hr">
 
