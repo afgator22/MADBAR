@@ -39,16 +39,16 @@
         .main-wrapper {
             position: relative;
             z-index: 2;
-            max-width: 950px; /* Expanded slightly to give the split layout room to breathe */
+            max-width: 950px;
             margin: 0 auto;
         }
 
         /* ==========================================================================
-           NEW SPLIT HEADER STYLES (Concept 1)
+           HEADER STYLES
            ========================================================================== */
         .header-container {
             display: flex;
-            flex-direction: column; /* Default stack on mobile */
+            flex-direction: column;
             align-items: center;
             gap: 2rem;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -62,7 +62,6 @@
             text-align: center;
         }
 
-        /* Left Side: Logo Column */
         .header-logo-side {
             display: flex;
             justify-content: center;
@@ -75,15 +74,14 @@
             width: 100%;
             height: auto;
             border-radius: 50%;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); /* Subtle gold glow to match logo */
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
         }
 
-        /* Right Side: Text Information Column */
         .header-text-side {
             flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center aligned on mobile */
+            align-items: center;
         }
 
         .brand-title {
@@ -101,7 +99,7 @@
             font-size: 1.35rem;
             font-weight: 300;
             font-style: italic;
-            color: #d4af37; /* Themed Gold */
+            color: #d4af37;
             margin-bottom: 1.25rem;
         }
 
@@ -147,27 +145,26 @@
             width: auto;
         }
 
-        /* Desktop Optimization for Header Split */
         @media (min-width: 768px) {
             .header-container {
-                flex-direction: row; /* Split left and right */
+                flex-direction: row;
                 text-align: left;
                 padding: 3.5rem 3rem;
                 gap: 3.5rem;
             }
 
             .header-text-side {
-                align-items: flex-start; /* Left-align content on desktop */
+                align-items: flex-start;
             }
 
             .divider {
-                margin: 0.5rem 0 1.25rem 0; /* Left align divider */
+                margin: 0.5rem 0 1.25rem 0;
                 background: linear-gradient(90deg, rgba(212,175,55,0.5), transparent);
             }
         }
 
         /* ==========================================================================
-           FEATURES STYLES
+           3x3 FEATURES GRID STYLES
            ========================================================================== */
         #features {
             margin-bottom: 4rem;
@@ -202,37 +199,153 @@
             gap: 24px;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
+            .features-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
             .features-grid-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            transition: all 0.3s ease;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .feature-card:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .feature-card h3 {
-            font-size: 1.3rem;
+        .feature-card-content h3 {
+            font-size: 1.25rem;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
         }
 
-        .feature-card p {
+        .feature-card-content p {
             color: #a1a1aa;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Screenshot Container & Trigger */
+        .screenshot-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #000;
+            aspect-ratio: 16 / 9; /* Change to 9/16 if your app screenshots are vertical */
+        }
+
+        .screenshot-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-wrapper:hover .screenshot-thumb {
+            transform: scale(1.05);
+        }
+
+        /* Overlay text hints */
+        .screenshot-wrapper::after {
+            content: "Click to Expand";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            color: rgba(212, 175, 55, 0.9);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 20px 0 8px 0;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .screenshot-wrapper:hover::after {
+            opacity: 1;
+        }
+
+        /* CSS-Only Lightbox System */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-modal:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #ffffff;
+            font-size: 35px;
+            text-decoration: none;
+            font-weight: 300;
+            transition: color 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            color: #d4af37;
+        }
+
+        .lightbox-bg-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            cursor: default;
         }
 
         /* ==========================================================================
@@ -342,7 +455,6 @@
     <div class="main-wrapper">
 
         <header class="header-container">
-            
             <div class="header-logo-side">
                 <img src="MAD BAR.jpg" alt="MADBAR Logo" class="header-logo">
             </div>
@@ -361,7 +473,6 @@
                     </a>
                 </div>
             </div>
-
         </header>
 
         <section id="features">
@@ -370,22 +481,109 @@
             <div class="features-hr"></div>
 
             <div class="features-grid-container">
+                
                 <div class="feature-card">
-                    <h3>Feature One</h3>
-                    <p>Description for your first app feature goes here. Keep it punchy and highlight the value to the user.</p>
+                    <div class="feature-card-content">
+                        <h3>AI Bartender</h3>
+                        <p>Generate completely unique recipes or ask our virtual mixologist for smart tips based strictly on the ingredients you have left.</p>
+                    </div>
+                    <a href="#img1" class="screenshot-wrapper">
+                        <img src="screenshot1.jpg" alt="AI Bartender Screenshot" class="screenshot-thumb">
+                    </a>
                 </div>
 
                 <div class="feature-card">
-                    <h3>Feature Two</h3>
-                    <p>Description for your second app feature goes here. Highlight what makes this specific tool unique or easy to use.</p>
+                    <div class="feature-card-content">
+                        <h3>Event Page</h3>
+                        <p>Planning a dynamic gathering? Create a custom, designated drink menu for your next digital happy hour or dynamic backyard bash.</p>
+                    </div>
+                    <a href="#img2" class="screenshot-wrapper">
+                        <img src="screenshot2.jpg" alt="Event Page Screenshot" class="screenshot-thumb">
+                    </a>
                 </div>
 
                 <div class="feature-card">
-                    <h3>Feature Three</h3>
-                    <p>Description for your third app feature goes here. Talk about the smart AI tools or offline capabilities.</p>
+                    <div class="feature-card-content">
+                        <h3>Shopping List</h3>
+                        <p>Never blank out down the liquor aisle again. Track out-of-stock items dynamically and build an organized list automatically.</p>
+                    </div>
+                    <a href="#img3" class="screenshot-wrapper">
+                        <img src="screenshot3.jpg" alt="Shopping List Screenshot" class="screenshot-thumb">
+                    </a>
                 </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Recipe Builder</h3>
+                        <p>Store personal family blends or edit historical classic builds to fit your fine-tuned preferences perfectly.</p>
+                    </div>
+                    <a href="#img4" class="screenshot-wrapper">
+                        <img src="screenshot4.jpg" alt="Recipe Builder Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Cocktail Explorer</h3>
+                        <p>Browse through hundreds of vetted classic dynamic guides and master subtle historic standard techniques.</p>
+                    </div>
+                    <a href="#img5" class="screenshot-wrapper">
+                        <img src="screenshot5.jpg" alt="Cocktail Explorer Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Bar Management</h3>
+                        <p>Catalog your current inventory seamlessly to discover exactly what you can shake up without making extra store trips.</p>
+                    </div>
+                    <a href="#img6" class="screenshot-wrapper">
+                        <img src="screenshot6.jpg" alt="Bar Management Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Picture Import</h3>
+                        <p>Snap a quick photo of any printed cocktail menu out at a public bar and watch the smart AI extract the data instantly.</p>
+                    </div>
+                    <a href="#img7" class="screenshot-wrapper">
+                        <img src="screenshot7.jpg" alt="Picture Import Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Community Share</h3>
+                        <p>Export your custom tailored recipe cards effortlessly to pass down delicious ideas directly to friends.</p>
+                    </div>
+                    <a href="#img8" class="screenshot-wrapper">
+                        <img src="screenshot8.jpg" alt="Community Share Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>Offline Mode</h3>
+                        <p>Access your saved personal bar setup and favorite mixed drinks list safely even without cellular internet data.</p>
+                    </div>
+                    <a href="#img9" class="screenshot-wrapper">
+                        <img src="screenshot9.jpg" alt="Offline Mode Screenshot" class="screenshot-thumb">
+                    </a>
+                </div>
+
             </div>
         </section>
+
+        <div id="img1" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot1.jpg" alt="AI Bartender Full Screen" class="lightbox-content"></div>
+        <div id="img2" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot2.jpg" alt="Event Page Full Screen" class="lightbox-content"></div>
+        <div id="img3" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot3.jpg" alt="Shopping List Full Screen" class="lightbox-content"></div>
+        <div id="img4" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot4.jpg" alt="Recipe Builder Full Screen" class="lightbox-content"></div>
+        <div id="img5" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot5.jpg" alt="Cocktail Explorer Full Screen" class="lightbox-content"></div>
+        <div id="img6" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot6.jpg" alt="Bar Management Full Screen" class="lightbox-content"></div>
+        <div id="img7" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot7.jpg" alt="Picture Import Full Screen" class="lightbox-content"></div>
+        <div id="img8" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot8.jpg" alt="Community Share Full Screen" class="lightbox-content"></div>
+        <div id="img9" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot9.jpg" alt="Offline Mode Full Screen" class="lightbox-content"></div>
 
         <hr class="section-hr">
 
@@ -396,7 +594,6 @@
             <div class="video-hr"></div>
             
             <div class="video-grid-container">
-                
                 <div class="video-column">
                     <h3>Getting Started!</h3>
                     <div class="video-container">
@@ -438,7 +635,6 @@
                         <iframe src="https://youtube.com/embed/pQJTG4moFmI?si" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
-
             </div>
         </section>
 
