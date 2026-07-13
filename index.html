@@ -167,7 +167,76 @@
         }
 
         /* ==========================================================================
-           VIDEOS & DOWNLOADS STYLES
+           FEATURES STYLES
+           ========================================================================== */
+        #features {
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        #features h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        #features .sub-text {
+            color: #a1a1aa;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-bottom: 1.75rem;
+        }
+
+        .features-hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.15), transparent);
+            margin-bottom: 2rem;
+        }
+
+        .features-grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #a1a1aa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           VIDEOS STYLES
            ========================================================================== */
         .video-grid-container {
             display: grid;
@@ -247,77 +316,7 @@
             margin: 4rem 0;
         }
 
-        #downloads {
-            padding: 0 1rem;
-            margin-bottom: 4rem;
-        }
-
-        #downloads h2 { 
-            font-size: 2rem; 
-            font-weight: 700; 
-            color: #ffffff;
-            margin-bottom: 0.25rem;
-        }
-
-        #downloads .section-subtitle { 
-            color: #a1a1aa; 
-            font-size: 1.05rem; 
-            margin-bottom: 2.5rem; 
-        }
-
-        .packs-grid-container {
-            display: flex;
-            flex-wrap: wrap; 
-            gap: 0; 
-            margin-top: 1rem;
-        }
-
-        .pack-column {
-            flex: 1;
-            min-width: 250px; 
-            max-width: 450px;
-            padding: 0 2rem 2rem 0; 
-            margin-bottom: 2rem;
-        }
-
-        .pack-column:not(:last-child) {
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            margin-right: 2rem;
-        }
-
-        #downloads h3 { 
-            font-size: 1.4rem; 
-            font-weight: 600; 
-            margin-bottom: 0.5rem; 
-            color: #ffffff; 
-        }
-
-        #downloads .pack-column p { 
-            color: #a1a1aa; 
-            font-size: 1rem;
-            margin-bottom: 1.25rem; 
-        }
-
-        .download-link {
-            display: inline-block;
-            color: #38bdf8; 
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .download-link:hover {
-            color: #7dd3fc;
-            text-decoration: underline;
-        }
-
-        .download-link.disabled {
-            color: #52525b;
-            pointer-events: none;
-            text-decoration: none;
-        }
-
-        /* Mobile Responsive Adjustments for Bottom grid panels */
+        /* Mobile Responsive Adjustments */
         @media (max-width: 768px) {
             .brand-title {
                 font-size: 2.5rem;
@@ -325,20 +324,6 @@
             }
             .brand-tagline {
                 font-size: 1.2rem;
-            }
-            .pack-column {
-                flex: 1 1 100%;
-                min-width: 100%;
-                max-width: 100%;
-                padding-right: 0 !important;
-                margin-right: 0 !important;
-                border-right: none !important;
-            }
-            
-            .pack-column:not(:last-child) {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                margin-bottom: 2rem;
-                padding-bottom: 2rem;
             }
         }
     </style>
@@ -378,6 +363,31 @@
             </div>
 
         </header>
+
+        <section id="features">
+            <h2>App Features</h2>
+            <p class="sub-text">Everything you need to mix like a master.</p>
+            <div class="features-hr"></div>
+
+            <div class="features-grid-container">
+                <div class="feature-card">
+                    <h3>Feature One</h3>
+                    <p>Description for your first app feature goes here. Keep it punchy and highlight the value to the user.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Feature Two</h3>
+                    <p>Description for your second app feature goes here. Highlight what makes this specific tool unique or easy to use.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Feature Three</h3>
+                    <p>Description for your third app feature goes here. Talk about the smart AI tools or offline capabilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-hr">
 
         <section id="videos">
             <h2>How-To Videos</h2>
@@ -433,8 +443,6 @@
         </section>
 
         <hr class="section-hr">
-
-        
                 
         <a href="mailto:fbirdgator@gmail.com?subject=GitHub%20Page%20Feedback" 
            style="display: inline-block; 
@@ -448,12 +456,12 @@
             Send Feedback
         </a>
 
-<footer>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <p style="text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #666;">
-        &copy; 2026 jmc_MADBAR. All rights reserved.
-    </p>
-</footer>
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <p style="text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #666;">
+                &copy; 2026 jmc_MADBAR. All rights reserved.
+            </p>
+        </footer>
 
     </div>
 </body>
