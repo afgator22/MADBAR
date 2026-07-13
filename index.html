@@ -244,44 +244,45 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Screenshot Container & Trigger */
+        /* Portrait Mobile Screenshot Display Formatting */
         .screenshot-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 10px;
+            max-width: 260px; /* Restricts giant width stretches on desktop layouts */
+            margin: 0 auto;
+            border-radius: 14px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: #000;
-            aspect-ratio: 16 / 9; /* Change to 9/16 if your app screenshots are vertical */
+            background-color: #050508;
+            aspect-ratio: 9 / 16; /* Portrait standard smartphone framing */
         }
 
         .screenshot-thumb {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Ensures the complete smartphone screen shows without crop zones */
             display: block;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         .screenshot-wrapper:hover .screenshot-thumb {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        /* Overlay text hints */
         .screenshot-wrapper::after {
             content: "Click to Expand";
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
-            color: rgba(212, 175, 55, 0.9);
+            background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+            color: rgba(212, 175, 55, 0.95);
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             text-align: center;
-            padding: 20px 0 8px 0;
+            padding: 24px 0 10px 0;
             opacity: 0;
             transition: opacity 0.2s ease;
             pointer-events: none;
@@ -291,14 +292,14 @@
             opacity: 1;
         }
 
-        /* CSS-Only Lightbox System */
+        /* Pure CSS Lightbox System */
         .lightbox-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(5, 5, 8, 0.95);
+            background-color: rgba(5, 5, 8, 0.96);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             z-index: 9999;
@@ -318,9 +319,10 @@
         .lightbox-content {
             max-width: 90%;
             max-height: 85vh;
-            border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .lightbox-close {
@@ -328,10 +330,11 @@
             top: 20px;
             right: 25px;
             color: #ffffff;
-            font-size: 35px;
+            font-size: 38px;
             text-decoration: none;
-            font-weight: 300;
+            font-weight: 200;
             transition: color 0.2s ease;
+            z-index: 10001;
         }
 
         .lightbox-close:hover {
@@ -475,14 +478,18 @@
             </div>
         </header>
 
+        <!-- ==========================================================================
+           3x3 EXPANDABLE FEATURES SECTION (PORTRAIT ORIENTED)
+           ========================================================================== -->
         <section id="features">
             <h2>App Features</h2>
             <p class="sub-text">Everything you need to mix like a master.</p>
-           <p class="sub-text" style="font-size: 0.85rem; margin-top: -1rem; color: #71717a;">* Some features unavailable without setting up Free Gemini AI Account.</p>
+            <p class="sub-text" style="font-size: 0.85rem; margin-top: -1rem; color: #71717a;">* Some features unavailable without setting up Free Gemini AI Account.</p>
             <div class="features-hr"></div>
 
             <div class="features-grid-container">
                 
+                <!-- Card 1 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>AI Bartender *</h3>
@@ -493,26 +500,29 @@
                     </a>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Event Page</h3>
-                        <p>Plan an event, create a shopping list, diplay a beautiful list of drinks, use a QR code to provide the menu to your guest's devices, gather feedback, etc.</p>
+                        <p>Plan an event, create a shopping list, display a beautiful list of drinks, use a QR code to provide the menu to your guest's devices, gather feedback, etc.</p>
                     </div>
                     <a href="#img2" class="screenshot-wrapper">
                         <img src="Event-Page.png" alt="Event Page Screenshot" class="screenshot-thumb">
                     </a>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Shopping List</h3>
-                        <p>Never blank out down the liquor aisle again. Track out-of-stock items dynamically and build an organized list automatically. Inventory automatically upadate as you mark things off your list.</p>
+                        <p>Never blank out down the liquor aisle again. Track out-of-stock items dynamically and build an organized list automatically. Inventory automatically updates as you mark things off your list.</p>
                     </div>
                     <a href="#img3" class="screenshot-wrapper">
                         <img src="Shopping.png" alt="Shopping List Screenshot" class="screenshot-thumb">
                     </a>
                 </div>
 
+                <!-- Card 4 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Recipe Capture *</h3>
@@ -523,6 +533,7 @@
                     </a>
                 </div>
 
+                <!-- Card 5 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Cocktail Explorer *</h3>
@@ -533,6 +544,7 @@
                     </a>
                 </div>
 
+                <!-- Card 6 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Bar Management *</h3>
@@ -543,6 +555,7 @@
                     </a>
                 </div>
 
+                <!-- Card 7 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Picture Import *</h3>
@@ -553,6 +566,7 @@
                     </a>
                 </div>
 
+                <!-- Card 8 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Community Share</h3>
@@ -563,28 +577,30 @@
                     </a>
                 </div>
 
+                <!-- Card 9 -->
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>Video Input for Inventory *</h3>
                         <p>Take a short video of your shelves and have AI help you track in your inventory.</p>
                     </div>
                     <a href="#img9" class="screenshot-wrapper">
-                        <img src="Video.png" alt="Offline Mode Screenshot" class="screenshot-thumb">
+                        <img src="Video.png" alt="Video Input Screenshot" class="screenshot-thumb">
                     </a>
                 </div>
 
             </div>
         </section>
 
-        <div id="img1" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot1.jpg" alt="AI Bartender Full Screen" class="lightbox-content"></div>
-        <div id="img2" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot2.jpg" alt="Event Page Full Screen" class="lightbox-content"></div>
-        <div id="img3" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot3.jpg" alt="Shopping List Full Screen" class="lightbox-content"></div>
-        <div id="img4" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot4.jpg" alt="Recipe Builder Full Screen" class="lightbox-content"></div>
-        <div id="img5" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot5.jpg" alt="Cocktail Explorer Full Screen" class="lightbox-content"></div>
-        <div id="img6" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot6.jpg" alt="Bar Management Full Screen" class="lightbox-content"></div>
-        <div id="img7" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot7.jpg" alt="Picture Import Full Screen" class="lightbox-content"></div>
-        <div id="img8" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot8.jpg" alt="Community Share Full Screen" class="lightbox-content"></div>
-        <div id="img9" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="screenshot9.jpg" alt="Offline Mode Full Screen" class="lightbox-content"></div>
+        <!-- LIGHTBOX MODALS FOR PORTRAIT IMAGES -->
+        <div id="img1" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="AI-Bartender.png" alt="AI Bartender Full Screen" class="lightbox-content"></div>
+        <div id="img2" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Event-Page.png" alt="Event Page Full Screen" class="lightbox-content"></div>
+        <div id="img3" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Shopping.png" alt="Shopping List Full Screen" class="lightbox-content"></div>
+        <div id="img4" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Recipe-Page.png" alt="Recipe Builder Full Screen" class="lightbox-content"></div>
+        <div id="img5" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="BigRecipe-Page.png" alt="Cocktail Explorer Full Screen" class="lightbox-content"></div>
+        <div id="img6" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Inventory-Page.png" alt="Bar Management Full Screen" class="lightbox-content"></div>
+        <div id="img7" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Capture-Page.png" alt="Picture Import Full Screen" class="lightbox-content"></div>
+        <div id="img8" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="share.png" alt="Community Share Full Screen" class="lightbox-content"></div>
+        <div id="img9" class="lightbox-modal"><a href="#features" class="lightbox-bg-link"></a><a href="#features" class="lightbox-close">&times;</a><img src="Video.png" alt="Video Input Full Screen" class="lightbox-content"></div>
 
         <hr class="section-hr">
 
@@ -598,7 +614,7 @@
                 <div class="video-column">
                     <h3>Getting Started!</h3>
                     <div class="video-container">
-                        <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://youtube.com/embed/ztSE7uixibc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
 
